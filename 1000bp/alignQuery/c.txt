@@ -1,0 +1,11 @@
+This is the performance file for alignment in 1000c.txt
+
+number of true positive: 755
+number of false positive: 39
+number of true negative: 118
+number of false negative: 73
+
+Accuracy: 0.89
+Sensitivity: 0.91
+Specificity: 0.75
+

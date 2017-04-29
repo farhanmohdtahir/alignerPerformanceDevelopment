@@ -1,0 +1,11 @@
+This is the performance file for alignment in 1000b.txt
+
+number of true positive: 905
+number of false positive: 12
+number of true negative: 69
+number of false negative: 14
+
+Accuracy: 0.97
+Sensitivity: 0.98
+Specificity: 0.85
+

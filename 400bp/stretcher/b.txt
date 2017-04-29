@@ -1,0 +1,11 @@
+This is the performance file for alignment in 400b.txt
+
+number of true positive: 354
+number of false positive: 11
+number of true negative: 18
+number of false negative: 17
+
+Accuracy: 0.93
+Sensitivity: 0.95
+Specificity: 0.62
+

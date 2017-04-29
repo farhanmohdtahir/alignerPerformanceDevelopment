@@ -1,0 +1,11 @@
+This is the performance file for alignment in 1000a.txt
+
+number of true positive: 995
+number of false positive: 0
+number of true negative: 5
+number of false negative: 0
+
+Accuracy: 1.00
+Sensitivity: 1.00
+Specificity: 1.00
+

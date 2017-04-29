@@ -1,0 +1,11 @@
+This is the performance file for alignment in 800a.txt
+
+number of true positive: 794
+number of false positive: 0
+number of true negative: 4
+number of false negative: 2
+
+Accuracy: 1.00
+Sensitivity: 1.00
+Specificity: 1.00
+

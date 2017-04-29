@@ -1,0 +1,11 @@
+This is the performance file for alignment in 800d.txt
+
+number of true positive: 282
+number of false positive: 128
+number of true negative: 198
+number of false negative: 192
+
+Accuracy: 0.60
+Sensitivity: 0.59
+Specificity: 0.61
+

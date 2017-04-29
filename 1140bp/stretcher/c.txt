@@ -1,0 +1,11 @@
+This is the performance file for alignment in 1140c.txt
+
+number of true positive: 895
+number of false positive: 47
+number of true negative: 150
+number of false negative: 48
+
+Accuracy: 0.92
+Sensitivity: 0.95
+Specificity: 0.76
+

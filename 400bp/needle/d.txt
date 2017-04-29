@@ -1,0 +1,11 @@
+This is the performance file for alignment in 400d.txt
+
+number of true positive: 213
+number of false positive: 57
+number of true negative: 87
+number of false negative: 43
+
+Accuracy: 0.75
+Sensitivity: 0.83
+Specificity: 0.60
+

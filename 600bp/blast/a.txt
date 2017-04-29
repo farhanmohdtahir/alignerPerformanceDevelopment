@@ -1,0 +1,11 @@
+This is the performance file for alignment in 600a.txt
+
+number of true positive: 596
+number of false positive: 0
+number of true negative: 4
+number of false negative: 0
+
+Accuracy: 1.00
+Sensitivity: 1.00
+Specificity: 1.00
+

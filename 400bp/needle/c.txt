@@ -1,0 +1,11 @@
+This is the performance file for alignment in 400c.txt
+
+number of true positive: 315
+number of false positive: 15
+number of true negative: 46
+number of false negative: 19
+
+Accuracy: 0.91
+Sensitivity: 0.94
+Specificity: 0.75
+

@@ -1,0 +1,11 @@
+This is the performance file for alignment in 600b.txt
+
+number of true positive: 527
+number of false positive: 9
+number of true negative: 38
+number of false negative: 26
+
+Accuracy: 0.94
+Sensitivity: 0.95
+Specificity: 0.81
+

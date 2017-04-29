@@ -1,0 +1,11 @@
+This is the performance file for alignment in 800b.txt
+
+number of true positive: 685
+number of false positive: 15
+number of true negative: 54
+number of false negative: 46
+
+Accuracy: 0.92
+Sensitivity: 0.94
+Specificity: 0.78
+
