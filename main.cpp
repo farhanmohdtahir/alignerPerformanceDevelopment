@@ -16,15 +16,53 @@ struct seqTest{
 };
 
 void input(string inFile, seqRef & a, seqRef & b, seqTest & c, seqTest & d);
-void calc(seqRef a, seqRef b, seqTest c, seqTest d, double &tp, double &fp, double &tn, double &fn, double &acc, double &sen, double &spec);
-void print(string inFile, string outFile, double tp, double fp, double tn, double fn, double acc, double sen, double spec);
-void help();
+/*
+This function is to read reference alignment sequence and alignment sequence from
+PSA programs from input file and transfer it to program's string variable
+@parameter inFile: receive filename of input file
+@parameter a: return alignment sequence of reference sequence in reference alignment sequence
+@parameter b: return alignment sequence of simulated sequence in reference alignment sequence
+@parameter c: return alignment sequence of reference sequence in PSA programs alignment sequence
+@parameter d: return alignment sequence of simulated sequence in PSA programs alignment sequence 
+*/
 
+void calc(seqRef a, seqRef b, seqTest c, seqTest d, double &tp, double &fp, double &tn, double &fn, 
+double &acc, double &sen, double &spec);
+/*
+This function is to calculate the accuracy, sensitivity and specificity of 
+PSA programs alignment result in respect to reference alignment sequence
+@parameter a: receive alignment sequence of reference sequence in reference alignment sequence
+@parameter b: receive alignment sequence of simulated sequence in reference alignment sequence
+@parameter c: receive alignment sequence of reference sequence in PSA programs alignment sequence
+@parameter d: receive alignment sequence of simulated sequence in PSA programs alignment sequence
+@parameter tp: return number of true positives
+@parameter fp: return number of false positives
+@parameter tn: return number of true negatives
+@parameter fn: return number of false negatives
+@parameter acc: return accuracy result
+@parameter sen: return sensitivity result
+@parameter spec: return specificity resut
+*/
+void print(string inFile, string outFile, double tp, double fp, double tn, double fn, double acc, 
+double sen, double spec);
+/*
+This function is to print the result of accuracy, sensitivity and specificity of PSA programs
+into output file
+@parameter inFile: receive filename of input file
+@parameter outFile: receive filename of output file
+@parameter tp: receive number of true positives
+@parameter fp: receive number of false positives
+@parameter tn: receive number of true negatives
+@parameter fn: receive number of false negatives
+@parameter acc: receive accuracy result
+@parameter sen: receive sensitivity result
+@parameter spec: receive specificity resut
+*/
 
 int main(int argc, char * argv []) {
 	
 	int opt=0; 
-	string inFile="600a.txt", outFile="a.txt";
+	string inFile="", outFile="";
 	seqRef a, b;
 	seqTest c, d;
 	double tp=0, tn=0, fp=0, fn=0;
@@ -45,10 +83,10 @@ cin>>outFile;
 
 void input(string inFile, seqRef & a, seqRef & b, seqTest & c, seqTest & d){
 	int secBase=0;
-	string line="", z="", x="", v="", n="", line2="";
+	string line="";
 	ifstream in;
 	in.open(inFile.c_str());
-		while(getline(in, line)){
+		while(getline(in, line)){  //transfer sequence from file into string variable
 		if(line=="") secBase+=1; 
 		else{
 			if (secBase==0){
@@ -72,28 +110,27 @@ void calc(seqRef a, seqRef b, seqTest c, seqTest d, double &tp, double &fp, doub
 	int refAlign=0;
 	int i=0, j=0;
 
-	while(i<c.baseTest.length()){
-		if(a.baseRef[j]!='-'&&c.baseTest[i]!='-'){
-			if(c.baseTest[i]==d.baseTest[i]){
-				if(a.baseRef[j]==b.baseRef[j]) ++tp;
+	while(i<d.baseTest.length()){	//calculate tp, fp, tn and fn number
+		if(b.baseRef[j]!='-'&&d.baseTest[i]!='-'){
+			if(d.baseTest[i]==c.baseTest[i]){
+				if(b.baseRef[j]==a.baseRef[j]) ++tp;
 				else ++fp;
 			}
 			else{
-				if(a.baseRef[j]!=b.baseRef[j])++tn;
+				if(b.baseRef[j]!=a.baseRef[j])++tn;
 				else ++fn;
 			}
 			++i;++j;					
 			++refAlign;
 		}
 		else{
-			if(a.baseRef[j]=='-')++j;
-			if(c.baseTest[i]=='-')++i;
+			if(b.baseRef[j]=='-')++j;
+			if(d.baseTest[i]=='-')++i;
 		}
 	}
-//		cout<<tp<<" "<<fp;
-	acc=(tp+tn)/refAlign;
-	sen=tp/(tp+fn);
-	spec=tn/(tn+fp);	
+	acc=(tp+tn)/refAlign;	//calculate accuracy
+	sen=tp/(tp+fn);			//calculate sensitivity
+	spec=tn/(tn+fp);		//calculate specificity
 }
 
 void print(string inFile, string outFile, double tp, double fp, double tn, double fn, double acc, double sen, double spec){
@@ -111,39 +148,3 @@ void print(string inFile, string outFile, double tp, double fp, double tn, doubl
 	out<<"Specificity: "<<fixed<<setprecision(2)<<spec<<endl<<endl;
 	out.close();
 }
-
-//void help(){
-//		cout<<"alignerReference"<<endl;
-//	cout<<"Usage: ./ar -i inputFile -o outputFile"<<endl;
-//	cout<<"-i [required argument] - name of input file (.txt)\n";
-//	cout<<"-o [required argument] - name of output file (.txt)\n";
-//	cout<<"Thank You\n";
-//}
-
-//    static struct option long_options[] = {
-//        {"help",                       no_argument,       0,  'h' },
-//        {"inputFile",              required_argument,     0,  'i' },
-//        {"outputFile",             required_argument,     0,  'o' },                     
-//        {0,                               0,              0,   0  }
-//    };
-//    
-//    int long_index =0;
-//    while ((opt = getopt_long_only(argc, argv,"", 
-//                   long_options, &long_index )) != -1) {
-//        switch (opt) {
-//             case 'h' : help();option = true;
-//                 break;
-//             case 'i' : inFile = optarg;option = true;
-//                 break;
-//             case 'o' : outFile = optarg;option = true;
-//                 break;                                                  
-//             default: help(); 
-//                 exit(EXIT_FAILURE);
-//        }
-//    }	
-	
-//  if (inFile!="" && outFile!="" ){
-////}
-//else{
-//	help();
-//}
